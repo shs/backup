@@ -2,7 +2,7 @@ require 'fog'
 
 file_name = ARGV.first
 file_description = "#{Date.today} - #{File.basename(file_name)}"
-credentials = YAML.load_file('.aws.yml')
+credentials = YAML.load_file('/root/backup/.aws.yml')
 chunk_size = 8*1024*1024
 
 glacier = Fog::AWS::Glacier.new(credentials)
