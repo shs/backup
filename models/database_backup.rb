@@ -13,10 +13,7 @@ Backup::Model.new(:database_backup, 'Backups the SHS forum database.') do
   end
 
   store_with S3 do |s3|
-    s3.region            = 'us-east-1'
-    s3.bucket            = 'shs_backup'
-    s3.path              = '/database'
-    s3.keep              = 30
+    s3.keep = 30
   end
 
   compress_with Gzip
