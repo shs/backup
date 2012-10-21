@@ -9,7 +9,7 @@ Backup::Model.new(:file_backup, 'Backups the SHS file structure.') do
     s3.concurrency_level = 50
 
     s3.directories do |directory|
-      directory.add '/var/www/readme'
+      directory.add '/var/www'
     end
   end
 end
