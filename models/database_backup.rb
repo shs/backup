@@ -1,8 +1,5 @@
 # encoding: utf-8
 
-credentials = YAML.load_file('.aws.yml')
-
-# $ backup perform -t database_backup [-c <path_to_configuration_file>]
 Backup::Model.new(:database_backup, 'Backups the SHS forum database.') do
   split_into_chunks_of 5000
 
