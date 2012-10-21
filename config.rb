@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-credentials = YAML.load_file('.aws.yml')
+credentials = YAML.load_file(File.join(File.expand_path(File.dirname(__FILE__)), '.aws.yml'))
 
 Backup::Storage::S3.defaults do |s3|
   s3.access_key_id     = credentials['aws_access_key_id']
