@@ -1,65 +1,23 @@
 # encoding: utf-8
 
-##
-# Backup Generated: database_backup
-# Once configured, you can run the backup with the following command:
-#
+credentials = YAML.load_file('.aws.yml')
+
 # $ backup perform -t database_backup [-c <path_to_configuration_file>]
-#
-Backup::Model.new(:database_backup, 'Description for database_backup') do
-  ##
-  # Split [Splitter]
-  #
-  # Split the backup file in to chunks of 250 megabytes
-  # if the backup file size exceeds 250 megabytes
-  #
-  split_into_chunks_of 250
+Backup::Model.new(:database_backup, 'Backups the SHS forum database.') do
+  split_into_chunks_of 5000
 
-  ##
-  # MySQL [Database]
-  #
   database MySQL do |db|
-    # To dump all databases, set `db.name = :all` (or leave blank)
-    db.name               = "my_database_name"
-    db.username           = "my_username"
-    db.password           = "my_password"
-    db.host               = "localhost"
-    db.port               = 3306
-    db.socket             = "/tmp/mysql.sock"
-    # Note: when using `skip_tables` with the `db.name = :all` option,
-    # table names should be prefixed with a database name.
-    # e.g. ["db_name.table_to_skip", ...]
-    db.skip_tables        = ["skip", "these", "tables"]
-    db.only_tables        = ["only", "these" "tables"]
-    db.additional_options = ["--quick", "--single-transaction"]
-    # Optional: Use to set the location of this utility
-    #   if it cannot be found by name in your $PATH
-    # db.mysqldump_utility = "/opt/local/bin/mysqldump"
+    db.name               = 'shs_forum'
+    db.username           = 'backup'
+    db.additional_options = ['--opt']
   end
 
-  ##
-  # Amazon Simple Storage Service [Storage]
-  #
-  # Available Regions:
-  #
-  #  - ap-northeast-1
-  #  - ap-southeast-1
-  #  - eu-west-1
-  #  - us-east-1
-  #  - us-west-1
-  #
   store_with S3 do |s3|
-    s3.access_key_id     = "my_access_key_id"
-    s3.secret_access_key = "my_secret_access_key"
-    s3.region            = "us-east-1"
-    s3.bucket            = "bucket-name"
-    s3.path              = "/path/to/my/backups"
-    s3.keep              = 10
+    s3.region            = 'us-east-1'
+    s3.bucket            = 'shs_backup'
+    s3.path              = '/database'
+    s3.keep              = 30
   end
 
-  ##
-  # Gzip [Compressor]
-  #
   compress_with Gzip
-
 end
