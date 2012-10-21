@@ -12,4 +12,6 @@ Backup::Model.new(:file_backup, 'Backups the SHS file structure.') do
       directory.add '/var/www'
     end
   end
+
+  notify_with Mail
 end

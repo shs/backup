@@ -18,6 +18,16 @@ Backup::Syncer::Cloud::S3.defaults do |s3|
   s3.path              = 'file_backup'
 end
 
+Backup::Notifier::Mail.defaults do |mail|
+  mail.on_success           = true
+  mail.on_warning           = true
+  mail.on_failure           = true
+
+  mail.delivery_method      = :sendmail
+  mail.from                 = 'backup@spellholdstudios.net'
+  mail.to                   = 'backup@spellholdstudios.net'
+end
+
 Dir[File.join(File.dirname(Config.config_file), "models", "*.rb")].each do |model|
   instance_eval(File.read(model))
 end

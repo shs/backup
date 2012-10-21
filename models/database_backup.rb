@@ -14,4 +14,6 @@ Backup::Model.new(:database_backup, 'Backups the SHS forum database.') do
   end
 
   compress_with Gzip
+
+  notify_with Mail
 end

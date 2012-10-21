@@ -14,4 +14,6 @@ Backup::Model.new(:teargas_backup, 'Backups the Teargas backups (meta!).') do
       directory.add '/backup/teargas'
     end
   end
+
+  notify_with Mail
 end
