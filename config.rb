@@ -10,7 +10,7 @@ Backup::Storage::S3.defaults do |s3|
   s3.path              = ''
 end
 
-Backup::Cloud::S3.defaults do |s3|
+Backup::Syncer::Cloud::S3.defaults do |s3|
   s3.access_key_id     = credentials['aws_access_key_id']
   s3.secret_access_key = credentials['aws_secret_access_key']
   s3.region            = 'us-east-1'
