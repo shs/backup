@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Backup::Model.new(:teargas_backup, 'Backups the Teargas backups (meta!).') do
+Backup::Model.new(:teargas_backup, 'Teargas backups (meta!).') do
   split_into_chunks_of 5000
 
   sync_with Cloud::S3 do |s3|

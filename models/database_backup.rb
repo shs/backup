@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Backup::Model.new(:database_backup, 'Backups the SHS forum database.') do
+Backup::Model.new(:database_backup, 'SHS forum database.') do
   split_into_chunks_of 5000
 
   database MySQL do |db|

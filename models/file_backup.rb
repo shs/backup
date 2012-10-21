@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Backup::Model.new(:file_backup, 'Backups the SHS file structure.') do
+Backup::Model.new(:file_backup, 'SHS file structure.') do
   split_into_chunks_of 5000
 
   sync_with Cloud::S3 do |s3|
