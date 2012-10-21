@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Backup::Model.new(:database_backup, 'SHS forum database.') do
-  split_into_chunks_of 5000
+  split_into_chunks_of 4000
 
   database MySQL do |db|
     db.name               = 'shs_forum'

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Backup::Model.new(:file_backup, 'SHS file structure.') do
-  split_into_chunks_of 5000
+  split_into_chunks_of 4000
 
   sync_with Cloud::S3 do |s3|
     s3.mirror            = true
