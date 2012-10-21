@@ -13,5 +13,5 @@ Backup::Model.new(:file_backup, 'Backups the SHS file structure.') do
     end
   end
 
-  notify_with Mail
+  notify_by Mail
 end
