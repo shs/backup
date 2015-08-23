@@ -4,7 +4,7 @@ Model.new(:file_backup, 'SHS file structure.') do
   split_into_chunks_of 4000
 
   sync_with Cloud::S3 do |s3|
-    s3.mirror       = false
+    s3.mirror       = true
     s3.thread_count = 50
 
     s3.directories do |directory|
