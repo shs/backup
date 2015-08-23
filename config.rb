@@ -15,7 +15,7 @@ Backup::Syncer::Cloud::S3.defaults do |s3|
   s3.secret_access_key = credentials['aws_secret_access_key']
   s3.region            = 'us-east-1'
   s3.bucket            = 'shs-backup'
-  s3.path              = 'file_backup_new'
+  s3.path              = 'file_backup'
 end
 
 Backup::Notifier::Mail.defaults do |mail|
