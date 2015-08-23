@@ -9,6 +9,12 @@ Backup::Model.new(:database_backup, 'SHS forum database.') do
     db.additional_options = ['--opt']
   end
 
+  database MySQL do |db|
+    db.name               = 'shs_cms'
+    db.username           = 'backup'
+    db.additional_options = ['--opt']
+  end
+
   store_with S3 do |s3|
     s3.keep = 30
   end
