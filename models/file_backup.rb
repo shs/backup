@@ -5,7 +5,7 @@ Model.new(:file_backup, 'SHS file structure.') do
 
   sync_with Cloud::S3 do |s3|
     s3.mirror       = false
-    s3.threat_count = 50
+    s3.thread_count = 50
 
     s3.directories do |directory|
       directory.add '/var/www'
