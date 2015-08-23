@@ -10,6 +10,8 @@ Backup::Model.new(:file_backup, 'SHS file structure.') do
 
     s3.directories do |directory|
       directory.add '/var/www'
+      directory.add '/etc/apache2'
+      directory.add '/etc/php5'
     end
   end
 
