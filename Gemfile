@@ -4,3 +4,4 @@ ruby '2.2.2'
 
 gem 'backup'
 gem 'dotenv'
+gem 'whenever'

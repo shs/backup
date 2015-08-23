@@ -74,6 +74,7 @@ GEM
       xml-simple (= 1.1.4)
     buftok (0.2.0)
     builder (3.2.2)
+    chronic (0.10.2)
     descendants_tracker (0.0.3)
     dogapi (1.11.0)
       json (>= 1.5.1)
@@ -223,6 +224,8 @@ GEM
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
     xml-simple (1.1.4)
 
 PLATFORMS
@@ -231,6 +234,7 @@ PLATFORMS
 DEPENDENCIES
   backup
   dotenv
+  whenever
 
 BUNDLED WITH
    1.10.5
