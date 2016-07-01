@@ -54,14 +54,14 @@ vi /etc/network/interfaces
 # # device: eth0
 # auto  eth0
 # iface eth0 inet static
-#   address   78.46.48.67
+#   address   5.9.55.69
 #   netmask   255.255.255.224
-#   gateway   78.46.48.65
+#   gateway   5.9.55.65
 #   # default route to access subnet
-#   up route add -net 78.46.48.64 netmask 255.255.255.224 gw 78.46.48.65 eth0
+#   up route add -net 5.9.55.64 netmask 255.255.255.224 gw 5.9.55.65 eth0
 
 # iface eth0 inet6 static
-#   address 2a01:4f8:110:1386::2
+#   address 2a01:4f8:161:514a::2
 #   netmask 64
 #   gateway fe80::1
 
@@ -69,20 +69,23 @@ vi /etc/network/interfaces
 # iface br0 inet static
 #    bridge_ports eth0
 #    bridge_fd 0
-#    address 78.46.48.67
+#    address 5.9.55.69
 #    netmask 255.255.255.224
-#    pointopoint 78.46.48.65
-#    gateway 78.46.48.65
-#    up route add -host 78.46.53.122 dev br0
-#    up route add -host 78.46.53.124 dev br0
+#    pointopoint 5.9.55.65
+#    gateway 5.9.55.65
+#    up route add -host 5.9.55.88 dev br0
+#    up route add -host 5.9.55.90 dev br0
+
+
+
 vi /var/lib/lxc/shs/config
 
-# # Network configuration
+# Network configuration
 # lxc.network.type = veth
 # lxc.network.flags = up
 # lxc.network.link = br0
 # lxc.network.veth.pair = veth_cms
-# lxc.network.ipv4 = 78.46.53.122/32
+# lxc.network.ipv4 = 5.9.55.88/32
 
 vi /var/lib/lxc/shs/rootfs/etc/network/interfaces
 
@@ -90,12 +93,13 @@ vi /var/lib/lxc/shs/rootfs/etc/network/interfaces
 # iface lo inet loopback
 # auto eth0
 # iface eth0 inet static
-#     address 78.46.53.122
+#     address 5.9.55.88
 #     netmask 255.255.255.224
-#     pointopoint 78.46.48.67
-#     gateway 78.46.48.67
-#     up route add default gw 78.46.48.67
+#     pointopoint 5.9.55.69
+#     gateway 5.9.55.69
+#     up route add default gw 5.9.55.69
 
+reboot
 
 # VM
 
@@ -103,6 +107,10 @@ lxc-start -n shs -d
 
 lxc-console -n shs
 passwd
+
+# Verify internet connection
+
+ping google.com
 
 sudo apt-get update
 
