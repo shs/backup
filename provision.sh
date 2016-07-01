@@ -12,6 +12,25 @@ service ssh restart
 
 # Before we do anything else
 apt-get update
+
+# S.M.A.R.T Monitoring Tools
+apt-get install smartmontools
+vi /etc/default/smartmontools
+# Uncomment the line start_smartd=yes.
+
+vi /etc/smartd.conf
+
+# Comment out default config and use:
+# DEFAULT -d sat -a -m sconrad@spellholdstudios.net -M exec /usr/share/smartmontools/smartd-runner
+# /dev/sg1 -s (S/../.././01|L/../.././11)
+# /dev/sg2 -s (S/../.././02|L/../.././12)
+# /dev/sg3 -s (S/../.././03|L/../.././13)
+# /dev/sg4 -s (S/../.././04|L/../.././14)
+
+service smartmontools restart
+
+# Install VM
+
 apt-get install lxc
 apt-get install bridge-utils
 echo 1 > /proc/sys/net/ipv4/ip_forward
