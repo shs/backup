@@ -1,3 +1,16 @@
+# RAID Controller docs: https://wiki.hetzner.de/index.php/Adaptec_RAID_Controller/en
+
+# Turn off password-based SSH access
+
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+chmod a-w /etc/ssh/sshd_config.factory-defaults
+
+vi /etc/ssh/sshd_config
+# PasswordAuthentication no
+
+service ssh restart
+
+# Before we do anything else
 apt-get update
 apt-get install lxc
 apt-get install bridge-utils
