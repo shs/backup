@@ -167,6 +167,6 @@ aws s3 sync s3://shs-backup .
 
 
 chmod 777 $(find /var/www/forums/uploads -type d)
-
+chmod 777 $(find /var/www/downloads -type d)
 
 
