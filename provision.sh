@@ -84,7 +84,7 @@ vi /var/lib/lxc/shs/config
 # lxc.network.type = veth
 # lxc.network.flags = up
 # lxc.network.link = br0
-# lxc.network.veth.pair = veth_cms
+# lxc.network.veth.pair = veth_shs # this has to be unique for each LXC container
 # lxc.network.ipv4 = 5.9.55.88/32
 
 vi /var/lib/lxc/shs/rootfs/etc/network/interfaces
