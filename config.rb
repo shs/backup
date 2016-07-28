@@ -11,6 +11,10 @@ Dotenv.load
 
 root_path '/home/ubuntu/Backup'
 
+Utilities.configure do
+  sendmail '/usr/sbin/sendmail'
+end
+
 Storage::S3.defaults do |s3|
   s3.access_key_id     = ENV['AWS_ACCESS_KEY_ID']
   s3.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
