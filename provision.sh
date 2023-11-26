@@ -172,3 +172,36 @@ chmod 777 $(find /var/www/forums/uploads -type d)
 chmod 777 $(find /var/www/downloads -type d)
 
 
+
+
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+
+sudo apt-get install php5.6 php5.6-fpm
+sudo apt-get install libapache2-mod-php5.6 php5.6-cgi php5.6-cli php5.6-curl php5.6-imap php5.6-gd php5.6-mysql php5.6-pgsql php5.6-sqlite3 php5.6-mbstring php5.6-json php5.6-bz2 php5.6-mcrypt php5.6-xmlrpc php5.6-gmp php5.6-xsl php5.6-soap php5.6-xml php5.6-zip php5.6-dba
+sudo a2dismod mpm_event
+sudo a2enmod mpm_prefork
+sudo a2enmod php5.6
+systemctl restart apache2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
